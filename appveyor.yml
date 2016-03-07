@@ -40,6 +40,7 @@ build_script:
 
     - cmake -G "Visual Studio 12 Win64" \
         -DCMAKE_BUILD_TYPE:STRING=Release \
+        -DCMAKE_INSTALL_PREFIX:PATH="c:/Program Files/gnuradio" \
         -DBoost_INCLUDE_DIR:PATH=c:/boost.1.59.0.0/lib/native/include \
         -DBoost_FILESYSTEM_LIBRARY_RELEASE:FILEPATH=c:/boost_filesystem-vc120.1.59.0.0/lib/native/address-model-64/lib/boost_filesystem-vc120-mt-1_59.lib \
         -DBoost_THREAD_LIBRARY_RELEASE:FILEPATH=c:/boost_thread-vc120.1.59.0.0/lib/native/address-model-64/lib/boost_thread-vc120-mt-1_59.lib \
