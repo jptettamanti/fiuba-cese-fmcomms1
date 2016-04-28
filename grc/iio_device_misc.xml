@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<block>
+	<name>IIO Device Misc</name>
+	<key>iio_device_misc</key>
+	<category>Industrial IO</category>
+	<import>from gnuradio import iio</import>
+	<make>iio.device_misc($host, $device, $device_phy, $params)</make>
+
+	<param>
+		<name>Hostname</name>
+		<key>host</key>
+		<value></value>
+		<type>string</type>
+	</param>
+
+	<param>
+		<name>Device Name/ID</name>
+		<key>device</key>
+		<type>string</type>
+	</param>
+
+	<param>
+		<name>PHY Device Name/ID</name>
+		<key>device_phy</key>
+		<type>string</type>
+	</param>
+
+	<param>
+		<name>Parameters</name>
+		<key>params</key>
+		<value>[]</value>
+		<type>raw</type>
+	</param>
+
+	<!-- Refuse empty strings -->
+	<check>$device</check>
+	<check>$device_phy</check>
+</block>
