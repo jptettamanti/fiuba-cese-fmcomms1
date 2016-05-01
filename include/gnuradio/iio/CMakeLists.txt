@@ -23,6 +23,7 @@
 install(FILES
 	api.h
 	device_source.h device_sink.h device_misc.h
+	fmcomms1_source.h
 	fmcomms2_source.h fmcomms2_sink.h
 	fmcomms5_source.h fmcomms5_sink.h
 	DESTINATION ${GR_INCLUDE_DIR}/iio
