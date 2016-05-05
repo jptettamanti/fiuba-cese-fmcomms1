@@ -30,6 +30,7 @@ list(APPEND iio_sources
 	device_sink_impl.cc
 	device_misc_impl.cc
 	fmcomms1_source_impl.cc
+	fmcomms1_sink_impl.cc
 	fmcomms2_source_impl.cc
 	fmcomms2_sink_impl.cc
 	fmcomms5_source_impl.cc

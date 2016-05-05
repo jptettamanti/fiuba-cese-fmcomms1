@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<block>
+	<name>FMComms1 Sink</name>
+	<key>iio_fmcomms1_sink</key>
+	<category>Industrial IO</category>
+	<import>from gnuradio import iio</import>
+	<make>iio.fmcomms1_sink($host, $frequency, $samplerate, $interpolation - 1, $bandwidth, $ch1_en, $ch2_en, $buffer_size, $cyclic)</make>
+	<callback>set_params($frequency, $samplerate, $bandwidth)</callback>
+
+	<param>
+		<name>Hostname</name>
+		<key>host</key>
+		<value></value>
+		<type>string</type>
+	</param>
+
+	<param>
+		<name>LO Frequency</name>
+		<key>frequency</key>
+		<value>2400000000</value>
+		<type>int</type>
+	</param>
+
+	<param>
+		<name>Sample rate</name>
+		<key>samplerate</key>
+		<value>1536000</value>
+		<type>int</type>
+	</param>
+
+	<param>
+		<name>RF bandwidth</name>
+		<key>bandwidth</key>
+		<value>20000000</value>
+		<type>int</type>
+	</param>
+
+	<param>
+		<name>Buffer size</name>
+		<key>buffer_size</key>
+		<value>0x8000</value>
+		<type>int</type>
+	</param>
+
+	<param>
+		<name>Interpolation</name>
+		<key>interpolation</key>
+		<value>1</value>
+		<type>int</type>
+	</param>
+
+	<param>
+		<name>Channel 1 Enabled</name>
+		<key>ch1_en</key>
+		<value>True</value>
+		<type>enum</type>
+		<option><name>True</name><key>True</key></option>
+		<option><name>False</name><key>False</key></option>
+	</param>
+
+	<param>
+		<name>Channel 2 Enabled</name>
+		<key>ch2_en</key>
+		<value>True</value>
+		<type>enum</type>
+		<option><name>True</name><key>True</key></option>
+		<option><name>False</name><key>False</key></option>
+	</param>
+
+	<param>
+		<name>Cyclic</name>
+		<key>cyclic</key>
+		<value>False</value>
+		<type>enum</type>
+		<option><name>True</name><key>True</key></option>
+		<option><name>False</name><key>False</key></option>
+	</param>
+
+	<!-- Avoid divisions by zero -->
+	<check>$interpolation > 0</check>
+
+	<check>sum([$ch1_en, $ch2_en]) &gt; 0</check>
+
+	<sink>
+		<name>in</name>
+		<type>short</type>
+		<nports>sum([$ch1_en, $ch2_en])</nports>
+	</sink>
+</block>
